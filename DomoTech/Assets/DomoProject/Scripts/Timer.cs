@@ -6,19 +6,25 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
+    private GameData data;
 
-    private float gameTime = 120;
     private float remainingTime;
     private bool start = false;
 
+    private void Awake()
+    {
+        data = gameObject.GetComponent<GameData>();
+    }
+
     private void Start()
     {
-        remainingTime = gameTime;
+        remainingTime = data.GameTime;
         int minutes = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);
         int milliseconds = Mathf.FloorToInt((remainingTime * 1000F) % 1000F);
         timerText.text = string.Format("{0:0}:{1:00}:{2:000}", minutes, seconds, milliseconds);
     }
+
     private void Update()
     {
         if (start)
@@ -33,7 +39,7 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                remainingTime = gameTime;
+                remainingTime = data.GameTime;
             }
         }
     }

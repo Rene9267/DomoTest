@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    //numero di obj spawnabili
-    [SerializeField] private int spawnableItems = 20;
     [SerializeField] private GameObject BaseCollectable;
+    [SerializeField] private GameData data;
 
     //Volume del box in cui spawnare gli obj
     private Vector3 volumeSize;
@@ -24,23 +23,25 @@ public class ItemSpawner : MonoBehaviour
     //Spawner randomico sulla superfice di un cubo
     private void SafeSpawn()
     {
-        for (int i = 0; i < spawnableItems; i++)
+        for (int i = 0; i < data.SpawnableItems; i++)
         {
             Vector3 randomPosition;
             for (int y = 0; y < maxAttempt; y++)
             {
                 //Calcolo la posizione randomica dell'interno del cubo
-                randomPosition = new Vector3((Random.Range(-volumeSize.x, volumeSize.x) * 0.5f), 2, (Random.Range(-volumeSize.z, volumeSize.z) * 0.5f));
+                randomPosition = new Vector3((Random.Range(-volumeSize.x, volumeSize.x) * 0.5f), 0, (Random.Range(-volumeSize.z, volumeSize.z) * 0.5f));
 
                 //per controllare che gli obj non vengano spawnati tropo vicini ad altri utilizzo una CheckSpere
-                if (!Physics.CheckSphere(randomPosition, 2, 8))
+                if (!Physics.CheckSphere(randomPosition, 0.5f, 8))
                 {
                     Instantiate(BaseCollectable, randomPosition, Quaternion.identity);
+                    Debug.Log("Nasco" + " " + i);
                     break;
                 }
                 //Se dovesse andar male e dopo due tentativi non riuscire a trovare posto creerò l'obj sovrapposto all'ultimo ma più in alto
                 //in modo da evitare overlap
                 Instantiate(BaseCollectable, randomPosition + backUpPosition, Quaternion.identity);
+                Debug.Log("Nasco Male");
             }
 
         }

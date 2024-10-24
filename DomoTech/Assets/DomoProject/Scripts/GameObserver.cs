@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -6,13 +7,15 @@ using UnityEngine;
 //deciso di procedere con un Observer in modo da evitare l'utilizzo di un signleton e tenrere il tutto più modulare e staccato possibile
 public class GameObserver : MonoBehaviour
 {
-    private float gameTime = 120;
-    private float remainingTime;
+    public static event Action<int> IncrementPoints;
+
+    private GameData data;
+
     private int collectedCound;
 
-    private void Start()
+    private void Awake()
     {
-        remainingTime = gameTime;
+        data = gameObject.GetComponent<GameData>();
     }
 
     private void OnEnable()
@@ -29,17 +32,9 @@ public class GameObserver : MonoBehaviour
     {
         collectedCound++;
         Debug.Log(collectedCound);
-    }
-
-    private void Update()
-    {
-        if (remainingTime > 0)
+        IncrementPoints?.Invoke(collectedCound);
+        if (collectedCound >= data.SpawnableItems)
         {
-            remainingTime -= Time.deltaTime;
-        }
-        else
-        {
-            remainingTime = gameTime;
             EndGame();
         }
     }
