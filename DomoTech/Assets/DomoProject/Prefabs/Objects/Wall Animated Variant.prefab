@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 185636694984377136, guid: 98d0b5003d00b1c4c830ab39bacab8ef, type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 3.93
       objectReference: {fileID: 0}
     - target: {fileID: 185636694984377136, guid: 98d0b5003d00b1c4c830ab39bacab8ef, type: 3}
       propertyPath: m_Center.y
-      value: 0
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3153118441467313515, guid: 98d0b5003d00b1c4c830ab39bacab8ef, type: 3}
       propertyPath: m_StaticEditorFlags
