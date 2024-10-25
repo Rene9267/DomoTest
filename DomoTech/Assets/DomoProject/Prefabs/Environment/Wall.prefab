@@ -15,12 +15,12 @@ GameObject:
   - component: {fileID: 4294820289761792587}
   - component: {fileID: 8522318537206912358}
   - component: {fileID: 1846553984656320613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2482323151153870300
 Transform:
@@ -175,12 +175,12 @@ GameObject:
   - component: {fileID: 4367669320772153450}
   - component: {fileID: 1222154718130697958}
   - component: {fileID: 3701947616894666784}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7544293049949126994
 Transform:
@@ -267,8 +267,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 4, z: 1}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &4367669320772153450
 MonoBehaviour:
   m_ObjectHideFlags: 0
