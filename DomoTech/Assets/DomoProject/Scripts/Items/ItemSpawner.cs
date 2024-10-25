@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject BaseCollectable;
@@ -8,7 +7,7 @@ public class ItemSpawner : MonoBehaviour
     //Volume del box in cui spawnare gli obj
     private Vector3 volumeSize;
     private int maxAttempt = 2; //Numero di tentativi per lo spawn
-    private Vector3 backUpPosition = new Vector3(0, 3, 0); //Da testare precisione di collisione se blocco è troppo in alto
+    private Vector3 backUpPosition = new Vector3(0, 1, 0);
 
     private void Awake()
     {
@@ -35,13 +34,11 @@ public class ItemSpawner : MonoBehaviour
                 if (!Physics.CheckSphere(randomPosition, 1f, 8))
                 {
                     Instantiate(BaseCollectable, randomPosition, Quaternion.identity);
-                    Debug.Log("Nasco" + " " + i);
                     break;
                 }
                 //Se dovesse andar male e dopo due tentativi non riuscire a trovare posto creerò l'obj sovrapposto all'ultimo ma più in alto
                 //in modo da evitare overlap
                 Instantiate(BaseCollectable, randomPosition + backUpPosition, Quaternion.identity);
-                Debug.Log("Nasco Male");
             }
 
         }
