@@ -32,7 +32,7 @@ public class ItemSpawner : MonoBehaviour
                 randomPosition = new Vector3((Random.Range(-volumeSize.x, volumeSize.x) * 0.5f), 0, (Random.Range(-volumeSize.z, volumeSize.z) * 0.5f));
 
                 //per controllare che gli obj non vengano spawnati tropo vicini ad altri utilizzo una CheckSpere
-                if (!Physics.CheckSphere(randomPosition, 0.5f, 8))
+                if (!Physics.CheckSphere(randomPosition, 1f, 8))
                 {
                     Instantiate(BaseCollectable, randomPosition, Quaternion.identity);
                     Debug.Log("Nasco" + " " + i);
